@@ -7,10 +7,8 @@ import { InitialValues, onChangeArgs, Product, ProductCardHandlers, ProductConte
 export const ProductContext = createContext({} as ProductContextProps);
 const { Provider } = ProductContext;
 
-// children es un array tambien porque puede recibir mas de un elemento
 export interface Props {
     product: Product;
-    // children?: ReactElement | ReactElement[];
     children: (args: ProductCardHandlers) => JSX.Element;
     className?: string;
     style?: CSSProperties;
@@ -19,7 +17,6 @@ export interface Props {
     initialValues?: InitialValues;
 }
 
-// al hacerlo como modulo esos estilos son unicos, los está encapsulando
 export const ProductCard = ({ children, product, className, style, onChange, value, initialValues }: Props) => {
     const { counter, increaseBy, maxCount, isMaxCountReached, reset } = useProduct({ onChange, product, value, initialValues });
 
